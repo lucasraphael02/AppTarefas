@@ -191,10 +191,70 @@ Uma tarefa pode ter a sua data de vencimento removida, tornando-se sem prazo def
 - Uma tarefa inicialmente com data de vencimento em 19/02 pode ter seu prazo removido e passar a ser executada a qualquer momento.
 - Uma subtarefa não pode remover a sua data de vencimento se a tarefa pai possuir um prazo definido.
 
+### RN-10 — Reabertura de Tarefa com Dependentes
+**Descrição:**
+- Uma tarefa pode ser reaberta mesmo após concluída.
+
+**Restrições:**
+- Se uma tarefa for reaberta, todas as tarefas que dependem dela tornam-se automaticamente indisponíveis.
+- Uma tarefa dependente que já esteja concluída não pode permanecer concluída se a sua dependência for reaberta.
+
+**Exemplo:**
+- Se a tarefa "Implementar Backend" for reaberta, a tarefa "Testar API" deve ser reaberta ou bloqueada novamente.
+
+### RN-11 — Remoção de Tarefa
+**Descrição:**
+- Uma tarefa pode ser removida do sistema.
+
+**Restrições:**
+- Uma tarefa não pode ser removida se houver outras tarefas que dependam dela.
+- Alternativamente, o sistema pode exigir que as dependências sejam removidas manualmente antes.
+
+**Exemplo:**
+- A tarefa "Configurar Banco" não pode ser removida se "Criar Repositórios" depender dela
+
+### RN-12 — Associação Obrigatória a Grupo
+
+**Descrição:**
+- Toda tarefa deve pertencer a exatamente um grupo.
+
+**Restrições:**
+- Não é permitido criar uma tarefa sem grupo.
+- Ao remover um grupo, todas as tarefas associadas devem ser realocadas ou removidas.
+
+**Exemplo:**
+- Uma tarefa criada deve estar obrigatoriamente associada a um grupo válido.
+
+### RN-13 — Remoção de Grupo
+**Descrição:**
+- Um grupo pode ser removido do sistema.
+
+**Restrições:**
+- Um grupo só pode ser removido se não possuir subgrupos.
+- O grupo não pode ser removido se existirem tarefas associadas a ele.
+
+**Exemplo:**
+- O grupo "Java" só pode ser removido após mover ou excluir todas as tarefas vinculadas.
+
+### RN-14 — Herança de Grupo em Subtarefas
+**Descrição:**
+- Ao criar uma subtarefa, o grupo da tarefa pai é herdado automaticamente.
+- Alterações no grupo da tarefa pai afetam automaticamente as subtarefas.
+
+### RN-15 — Estado de Disponibilidade
+**Descrição:** 
+- Uma tarefa é considerada disponível se:
+  - Data de início ≤ data atual
+  - Todas as dependências estiverem concluídas
+  - Não estiver concluída
+
+
+
 ---
 
 
 
 ## 📌 Status do Projeto
 
-🚧 Em desenvolvimento — fase de definição de regras de negócio e arquitetura.
+🚧 Em desenvolvimento — fase de desenvolvimentos de Testes .
+
