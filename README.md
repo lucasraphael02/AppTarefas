@@ -144,7 +144,7 @@ O sistema será testado utilizando **JUnit**, com foco em:
 
 ### RN-06 — Hierarquia de Tarefas
 **Descrição:**  
-Uma tarefa pode possuir subtarefas, formando uma hierarquia. As subtarefas herdam, por padrão, o grupo e o contexto da tarefa pai.
+- Uma tarefa pode possuir subtarefas, formando uma hierarquia. As subtarefas herdam, por padrão, o grupo e o contexto da tarefa pai.
 
 **Restrições:**
 - Uma tarefa pode possuir zero ou mais subtarefas.
@@ -156,8 +156,40 @@ Uma tarefa pode possuir subtarefas, formando uma hierarquia. As subtarefas herda
 - Uma tarefa "Preparar Trabalho" possui subtarefas "Pesquisar", "Escrever" e "Revisar".
 - As subtarefas herdam o grupo "Faculdade".
 - A tarefa pai só pode ser concluída após todas as subtarefas serem concluídas.
- 
 
+### RN-07 — Atualização da Data de Vencimento
+**Descrição:**  
+- Uma tarefa pode ter sua data de vencimento alterada a qualquer momento, desde que respeite as regras temporais do sistema.
+
+**Restrições:**
+- A nova data de vencimento deve ser igual ou posterior à data de início da própria tarefa.
+- Caso a tarefa seja uma subtarefa, sua data de vencimento deve ser igual ou anterior à data de vencimento da tarefa pai.
+
+**Exemplo:**
+- Uma subtarefa com data de início em 10/05 pode ter sua data de vencimento alterada para 15/05, desde que a tarefa pai vença em 15/05 ou depois.
+
+
+### RN-08 — Atualização da Data de início
+**Descrição:**
+- Uma tarefa pode ter a sua data de início alterada a qualquer momento, desde que respeite as regras temporais do sistema.
+
+**Restrições:**
+- A nova data de início deve ser igual ou posterior à data de início da tarefa pai.
+- A nova data de início deve ser igual ou anterior a sua data de vencimento.
+
+**Exemplo:**
+- Uma subtarefa com data de vencimento 20/05 pode ter a sua data de início alterada para 05/05, desde que a tarefa pai inicie 05/05, ou antes.
+
+### RN-09 — Retirada da Data de Vencimento
+**Descrição:**  
+Uma tarefa pode ter a sua data de vencimento removida, tornando-se sem prazo definido, desde que não viole as regras de hierarquia temporal.
+
+**Restrições:**
+- Caso a tarefa seja uma subtarefa, a data de vencimento só poderá ser removida se a tarefa pai não possuir data de vencimento definida.
+
+**Exemplo:**
+- Uma tarefa inicialmente com data de vencimento em 19/02 pode ter seu prazo removido e passar a ser executada a qualquer momento.
+- Uma subtarefa não pode remover a sua data de vencimento se a tarefa pai possuir um prazo definido.
 
 ---
 
