@@ -1,4 +1,4 @@
-package org.example;
+package org.br.com.apptarefas;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

@@ -247,14 +247,11 @@ Uma tarefa pode ter a sua data de vencimento removida, tornando-se sem prazo def
   - Data de início ≤ data atual
   - Todas as dependências estiverem concluídas
   - Não estiver concluída
-
-
-
 ---
 
 
 
 ## 📌 Status do Projeto
 
-🚧 Em desenvolvimento — fase de desenvolvimentos de Testes .
+🚧 Em desenvolvimento — fase de desenvolvimento de Testes .
 
